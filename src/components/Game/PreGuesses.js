@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Guesses from "./Guesses";
 import WordLetters from "./WordLetters";
+import Keyboard from "./Keyboard";
 
 function PreGuesses({ answer }) {
   const arr = [...Array(6).fill(0)];
@@ -19,6 +20,7 @@ function PreGuesses({ answer }) {
 
   return (
     <div className="guess-result">
+      <Keyboard answer={answer} guesses={guesses} />
       <Guesses
         handleGuesses={handleGuesses}
         answer={answer}
