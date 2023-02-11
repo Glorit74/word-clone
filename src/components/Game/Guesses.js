@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import Banner from "./Banner";
 
 function Guesses({ handleGuesses, answer, step, setStep }) {
   const [guess, setGuess] = useState("");
   const [disable, setDisable] = useState(false);
+  const [bannerVisibility, setBannerVisibility] = useState(false);
 
   //   console.log(step, answer === guess);
   return (
@@ -16,6 +18,8 @@ function Guesses({ handleGuesses, answer, step, setStep }) {
           if (step <= 4) setStep(step + 1);
           else setDisable(true);
           if (guess !== answer) setGuess("");
+          if (step === 5 || guess === answer)
+            setBannerVisibility(!bannerVisibility);
         }}
       >
         <label htmlFor="guess-input">Enter guess:</label>
@@ -32,6 +36,7 @@ function Guesses({ handleGuesses, answer, step, setStep }) {
         <p>5 letters</p>
       </form>
       <br />
+      {bannerVisibility && <Banner step={step} answer={answer} guess={guess} />}
     </>
   );
 }

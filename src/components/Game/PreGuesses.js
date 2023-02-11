@@ -1,24 +1,22 @@
 import React, { useState } from "react";
 import Guesses from "./Guesses";
 import WordLetters from "./WordLetters";
-import Banner from "./Banner";
 
 function PreGuesses({ answer }) {
   const arr = [...Array(6).fill(0)];
   const [guesses, setGuesses] = useState(arr);
   const [step, setStep] = useState(0);
-  const [bannerVisibility, setBannerVisibility] = useState(false);
+
   let nextGuess = [];
 
-  const handleGuesses = (guess) => {
+  const handleGuesses = (guess, nextGuess) => {
     nextGuess = [...guesses];
     const indexOfZero = nextGuess.indexOf(0);
     nextGuess[indexOfZero] = guess;
     setGuesses(nextGuess);
     console.log("handle", nextGuess[step], step);
-    if (nextGuess[step] === answer || step === 5)
-      setBannerVisibility(!bannerVisibility);
   };
+
   return (
     <div className="guess-result">
       <Guesses
@@ -36,10 +34,10 @@ function PreGuesses({ answer }) {
 
       {guesses[0] ? (
         <div className="guess-results">
-          {guesses.map((g, index) => (
+          {guesses.map((word, index) => (
             <p className="guess" key={index}>
-              {g.length ? (
-                <WordLetters g={g} answer={answer} />
+              {word.length ? (
+                <WordLetters word={word} answer={answer} />
               ) : (
                 [...Array(5)].map((letter, index) => (
                   <span key={index} className="cell">
@@ -62,9 +60,6 @@ function PreGuesses({ answer }) {
             </p>
           ))}
         </div>
-      )}
-      {bannerVisibility && (
-        <Banner step={step} answer={answer} guess={nextGuess[step]} />
       )}
     </div>
   );

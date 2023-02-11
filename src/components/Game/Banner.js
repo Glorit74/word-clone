@@ -4,7 +4,7 @@ function Banner({ guess, answer, step }) {
   console.log("banner", guess);
   return (
     <>
-      {guess !== answer ? (
+      {guess === answer ? (
         <div className="happy banner">
           <p>
             <strong>Congratulations!</strong> Got it in{" "}
