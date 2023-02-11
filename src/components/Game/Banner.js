@@ -1,7 +1,6 @@
 import React from "react";
 
 function Banner({ guess, answer, step }) {
-  console.log("banner", guess);
   return (
     <>
       {guess === answer ? (

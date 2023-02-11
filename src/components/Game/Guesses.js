@@ -6,7 +6,6 @@ function Guesses({ handleGuesses, answer, step, setStep }) {
   const [disable, setDisable] = useState(false);
   const [bannerVisibility, setBannerVisibility] = useState(false);
 
-  //   console.log(step, answer === guess);
   return (
     <>
       <form
@@ -15,11 +14,13 @@ function Guesses({ handleGuesses, answer, step, setStep }) {
           e.preventDefault();
           if (guess.length < 5) return;
           handleGuesses(guess);
-          if (step <= 4) setStep(step + 1);
+          if (step <= 5) setStep(step + 1);
           else setDisable(true);
           if (guess !== answer) setGuess("");
-          if (step === 5 || guess === answer)
+          if (step === 5 || guess === answer) {
             setBannerVisibility(!bannerVisibility);
+            setDisable(true);
+          }
         }}
       >
         <label htmlFor="guess-input">Enter guess:</label>
