@@ -241,8 +241,11 @@ input[type="text"]:disabled {
 .keyboard-wrapper {
   position: fixed;
   top: cal(var(--header-height) + 15px);
-  left: 15px;
+  left: 20px;
+  min-width: 25%;
   border: 1px solid gray;
+  border-radius: 5px;
+  background-color: hsl(0deg 0% 97%);
   padding: 15px 13px;
   flex: 1;
   display: flex;
@@ -259,10 +262,12 @@ input[type="text"]:disabled {
 
 .keyboard-cell {
   position: relative;
-  width: 20px;
+  width: 9%;
   display: grid;
+  background-color: aliceblue;
   text-align: center;
   border: 2px solid var(--color-gray-700);
   border-radius: var(--radius);
   font-size: 1.2rem;
+  box-shadow: 1px 1px 1px grey;
 }
