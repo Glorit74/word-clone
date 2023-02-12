@@ -1,5 +1,5 @@
 import React from "react";
-import { checkGuess } from "../../game-helpers";
+import { checkUsedLettersOnKeyboard } from "../../game-helpers";
 
 function Keyboard({ guesses, answer }) {
   const keyboard = [
@@ -8,25 +8,16 @@ function Keyboard({ guesses, answer }) {
     ["Y", "X", "C", "V", "B", "N", "M"],
   ];
 
-  function letterColletor(guesses) {
-    const index = guesses.indexOf(0);
-    const tryedLetter = [...guesses].slice(0, index);
-    console.log(tryedLetter);
-  }
-
-  letterColletor(guesses);
-  //   const checkingCode = checkGuess(guesses, answer);
-
   return (
     <div className="keyboard-wrapper">
       {keyboard.map((line, index) => (
-        <p className="keyboard-line">
+        <p key={index} className="keyboard-line">
           {line.map((letter, index) => (
             <span
               key={index}
               className={`keyboard-cell
-		
-			`}
+			${checkUsedLettersOnKeyboard(guesses, answer, letter)}
+			  `}
             >
               {letter}
             </span>

@@ -15,7 +15,6 @@ function PreGuesses({ answer }) {
     const indexOfZero = nextGuess.indexOf(0);
     nextGuess[indexOfZero] = guess;
     setGuesses(nextGuess);
-    console.log("handle", nextGuess[step], step);
   };
 
   return (
