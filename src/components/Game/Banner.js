@@ -12,6 +12,7 @@ function Banner({ guess, answer, step }) {
             </strong>
             .
           </p>
+          {/* <button className="btn">New play</button> */}
         </div>
       ) : (
         <div className="sad banner">
